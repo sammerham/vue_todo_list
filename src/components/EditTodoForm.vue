@@ -1,13 +1,14 @@
 <template>
     <form @submit = "handleSubmit">
-      <input v-model="task" type="text" name="task" id="task" :placeholder="currentTodo.task"/>      
-
-      <button @click="handleSubmit">Update</button>
-      <button @click="handleCancel">Cancel</button>
+      <ahi-input class="editForm-input" v-model="task" type="text" name="task" id="task"  :placeholder="currentTodo.task" autocapitalize="sentences"></ahi-input> 
+      <ahi-button class="editForm-update" @click="handleSubmit" variant="primary" size="small"> Update </ahi-button>
+      <ahi-button class="editForm-cancel"  @click="handleCancel" variant="destructive" size="small"> Cancel </ahi-button>
     </form>
   </template>
   
   <script>
+    import "@azaleahealth/azalea-kit-ui/dist/components/input/input.js";
+    import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
     export default {
       name: 'EditTodoForm',
       data(){
@@ -38,6 +39,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .editForm-update{
+        margin-right: 20px;
+    }
+    .editForm-input{
+        margin-right: 20px;
     }
   </style>
   

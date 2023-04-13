@@ -1,13 +1,23 @@
 <template>
     <div>
-        <button @click="handleDelete"> Delete </button>
-        <button @click="handleEdit"> Edit </button>
-        <input type="checkbox" @click="handleToggle"  :checked="todo.completed" />
+        <ahi-button class="todo-delete" variant="destructive" size="small" @click="handleDelete"> Delete </ahi-button>
+        <ahi-button  class="todo-edit" size="small" @click="handleEdit"> Edit </ahi-button>
+        <ahi-checkbox class="todo-toggle" type="checkbox" @click="handleToggle"  :checked="todo.completed"></ahi-checkbox>
         <li :class="[todo.completed? 'complete' : 'incomplete', todo ]">{{todo.task}}</li>
+        <AhiIcon name="user" />
     </div>
 </template>
 
-<script>
+<script type="module">
+    import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
+    import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";
+
+    import "@azaleahealth/azalea-kit-ui/dist/components/icon/icon.js";
+    import { AzaleaIcons } from "@azaleahealth/azalea-kit-ui";
+    import { userIcon } from "@azaleahealth/azalea-kit-ui";
+    AzaleaIcons.addIcons(userIcon);
+
+
     export default {
         name: 'Todo',
         props: {
@@ -34,7 +44,7 @@
 <style scoped>
     .complete {
         text-decoration: line-through;
-        color: darkgrey;
+        color: green;
     }
     .incomplete {
         color: red
@@ -42,7 +52,26 @@
     div {
         display: flex;
         align-items: center;
-        /* justify-content: center; */
-        margin-right: 90px;
+        margin-right: 40px;
+        margin-bottom: 18px;
     }
+
+.todo-edit::part(base) {
+    background: rgb(55, 55, 53);
+    color: whitesmoke;
+    padding: 10px;
+  }
+
+  .todo-delete {
+    /* background: rgb(55, 55, 53);
+    color: whitesmoke;
+    border-radius: var(--ahi-border-radius-medium); */
+    margin-right: 20px;
+    margin-left: -1px;
+  }
+  .todo-toggle{
+
+    margin-left: 15px;
+    margin-right: -1px;
+  }
 </style>

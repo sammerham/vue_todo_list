@@ -1,15 +1,4 @@
 <template>
-   
-
-   <!-- <ul v-for="todo in todos" :key="todo.id"   >
-        <Todo 
-            @toggle-todo="$emit('toggle-todo', todo.id)"  
-            @delete-todo="$emit('delete-todo', todo.id)"  
-            @edit-todo="$emit('edit-todo', todo)"  
-            :todo="todo"
-            />
-   </ul> -->
-
 
    <ul v-if="todos.length">
         <Todo v-for="todo in todos" :key="todo.id"

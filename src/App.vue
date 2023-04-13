@@ -1,11 +1,12 @@
 <template>
   <div>
-    <!-- v-show="!this.isEditing" -->
-    <h1> Todo App </h1> 
+    <h1  v-if="!this.isEditing"> Todo App </h1> 
+    <h1  v-if="this.isEditing"> Edit Todo </h1> 
     <AddTodoForm 
-      v-if="!this.isEditing"
-      @add-todo="addTodo"
+    v-if="!this.isEditing"
+    @add-todo="addTodo"
     />
+   
     <EditTodoForm 
       v-show="this.isEditing"
       @cancel-edit="cancelEditing"
@@ -46,6 +47,7 @@
       // fn to add a todo to main todo list
       addTodo (todo) {
           if(todo)
+          todo = todo.charAt(0).toUpperCase() + todo.slice(1);
           this.todos = [...this.todos, {task:todo, id: new Date().getTime(), completed: false}];
       },
       // fn to delete a todo from main list
@@ -58,11 +60,15 @@
       },
       // fn to update a todo
       updateTodo (id, updatedTask) {
+        updatedTask = updatedTask.charAt(0).toUpperCase() + updatedTask.slice(1);
         this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
         this.isEditing = false;
       },
       // cancel edit and return to main form and todo list
-      cancelEditing(){this.isEditing = false},
+      cancelEditing(){
+        this.isEditing = false
+        this.currentTodo = {}
+      },
       // handle edit Click and show edit form 
       editTodo (todo) {
         this.isEditing = true;
@@ -83,6 +89,12 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+  h1 {
+    color: rgb(47, 47, 59);
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: 60px;
+  }
 </style>
