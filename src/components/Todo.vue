@@ -4,7 +4,6 @@
         <ahi-button  class="todo-edit" size="small" @click="handleEdit" :disabled="todo.completed" > Edit </ahi-button>
         <ahi-checkbox class="todo-toggle" type="checkbox" @click="handleToggle"  :checked="todo.completed"></ahi-checkbox>
         <li :class="[todo.completed? 'complete' : 'incomplete', todo ]">{{todo.task}}</li>
-        <AhiIcon name="user" />
     </div>
 </template>
 

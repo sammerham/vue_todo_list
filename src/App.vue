@@ -45,25 +45,69 @@
   
     methods: {
       // fn to add a todo to main todo list
-      addTodo (todo) {
-          if(todo)
-          todo = todo.charAt(0).toUpperCase() + todo.slice(1);
-          this.todos = [...this.todos, {task:todo, id: new Date().getTime(), completed: false}];
+      async addTodo (todo) {
+          if(todo){
+            todo = todo.charAt(0).toUpperCase() + todo.slice(1);
+            const res = await fetch('api/todos', {
+              method: "POST",
+              headers : {
+                'content-type' : 'application/json',
+              },
+              body: JSON.stringify({task:todo, completed: false})
+            });
+            const data = await res.json();
+            // this.todos = [...this.todos, {task:todo, id: new Date().getTime(), completed: false}];
+            this.todos = [...this.todos, data];
+          }
       },
       // fn to delete a todo from main list
-      deleteTodo (id ) {
-        this.todos = this.todos.filter(todo => todo.id !== id)
+      async deleteTodo (id ) {
+        const res = await fetch(`api/todos/${id}`, {
+          method:'DELETE'
+        });
+        
+        res.status === 200 ? this.todos = this.todos.filter(todo => todo.id !== id) : alert(`can't find this task!`)
       },
       // toggle todo completed or not completed;
-      toggleTodo (id) {
-        this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
+      async toggleTodo (id) {
+        const todoToUpdate = await this.fetchTodo(id);
+        console.log('todoUpdate', todoToUpdate);
+        const updatedTodo = {...todoToUpdate, completed:!todoToUpdate.completed};
+        console.log('todoUpdate', updatedTodo);
+        const res = await fetch(`api/todos/${id}`, {
+              method: "PUT",
+              headers : {
+                'content-type' : 'application/json',
+              },
+              body: JSON.stringify(updatedTodo )
+            });
+        const data = await res.json();
+        // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
+        this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:data.completed} : todo)
       },
       // fn to update a todo
-      updateTodo (id, updatedTask) {
-        if(updatedTask)
-        updatedTask = updatedTask.charAt(0).toUpperCase() + updatedTask.slice(1);
-        this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
-        this.isEditing = false;
+      async updateTodo (id, updatedTask) {
+        if(updatedTask){
+          updatedTask = updatedTask.charAt(0).toUpperCase() + updatedTask.slice(1);
+          const todoToUpdate = await this.fetchTodo(id);
+          const updatedTodo = {...todoToUpdate, task:updatedTask};
+          const res = await fetch(`api/todos/${id}`, {
+              method: "PUT",
+              headers : {
+                'content-type' : 'application/json',
+              },
+              body: JSON.stringify(updatedTodo )
+            });
+          const data = await res.json();
+          // this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
+          this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:data.task} : todo);
+          this.isEditing = false;
+        }
+
+      
+
+        
+        
       },
       // cancel edit and return to main form and todo list
       cancelEditing(){
@@ -74,18 +118,29 @@
       editTodo (todo) {
         this.isEditing = true;
         this.currentTodo = todo;
+      },
+      async fetchTodos(){
+        const res = await fetch('api/todos');
+        const data = await res.json();
+        return data;
+      },
+      async fetchTodo(id){
+        const res = await fetch(`api/todos/${id}`);
+        const data = await res.json();
+        return data;
       }
     },
     // // save todos in local storage ever time we have a new Todo
-    watch:{
-      todos(){
-        localStorage.setItem('todosKey', JSON.stringify(this.todos));
-      }
-    },
+    // watch:{
+    //   todos(){
+    //     // localStorage.setItem('todosKey', JSON.stringify(this.todos));
+    //   }
+    // },
     // get to todos saved in local storages and use them in set Todos every time app loads
-    created(){
-      const savedTodos = JSON.parse(localStorage.getItem('todosKey'));
-       this.todos = savedTodos;
+    async created(){
+      // const savedTodos = JSON.parse(localStorage.getItem('todosKey'));
+      //  this.todos = savedTodos;
+      this.todos = await this.fetchTodos();
     }
   }
 </script>
