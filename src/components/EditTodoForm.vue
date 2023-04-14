@@ -22,7 +22,11 @@
       methods: {
         handleSubmit(e) {
             
-          e.preventDefault()
+        e.preventDefault()
+        if (!this.task) {
+            alert('Please update this task or cancel')
+            return
+        }
           this.$emit('update-todo', this.currentTodo.id, this.task);
         },
         handleCancel(){

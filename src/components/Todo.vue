@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div >
         <ahi-button class="todo-delete" variant="destructive" size="small" @click="handleDelete"> Delete </ahi-button>
-        <ahi-button  class="todo-edit" size="small" @click="handleEdit"> Edit </ahi-button>
+        <ahi-button  class="todo-edit" size="small" @click="handleEdit" :disabled="todo.completed" > Edit </ahi-button>
         <ahi-checkbox class="todo-toggle" type="checkbox" @click="handleToggle"  :checked="todo.completed"></ahi-checkbox>
         <li :class="[todo.completed? 'complete' : 'incomplete', todo ]">{{todo.task}}</li>
         <AhiIcon name="user" />
@@ -10,7 +10,7 @@
 
 <script type="module">
     import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
-    import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";
+    import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";``
 
     import "@azaleahealth/azalea-kit-ui/dist/components/icon/icon.js";
     import { AzaleaIcons } from "@azaleahealth/azalea-kit-ui";

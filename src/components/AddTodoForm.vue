@@ -2,8 +2,7 @@
    
   <form @submit = "onSubmit">
     <!-- bind  input value with data using v-model-->
-    <!-- <input v-model="task" type="text" name="task" id="task" placeholder="add your task here ...." />   -->
-    <ahi-input v-model="task" type="text" name="task" id="task" placeholder="add your task here ...." autocapitalize="sentences"></ahi-input> 
+    <ahi-input v-model="task" type="text" name="task" id="task" placeholder="add your task here ...." autocapitalize="on"></ahi-input> 
     <ahi-button @click="onSubmit" variant="primary" size="small"> Add Todo </ahi-button>
   </form>
 </template>

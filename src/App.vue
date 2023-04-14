@@ -60,6 +60,7 @@
       },
       // fn to update a todo
       updateTodo (id, updatedTask) {
+        if(updatedTask)
         updatedTask = updatedTask.charAt(0).toUpperCase() + updatedTask.slice(1);
         this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
         this.isEditing = false;
