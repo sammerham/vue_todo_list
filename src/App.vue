@@ -20,6 +20,8 @@
       @edit-todo="editTodo"
       :todos="this.todos"
       />
+      <router-view></router-view>
+      <Footer />
   </div>
 </template>
 
@@ -27,14 +29,16 @@
     import AddTodoForm from './components/AddTodoForm.vue'; 
     import TodoList from './components/TodoList.vue';
     import EditTodoForm from './components/EditTodoForm.vue';
+    import Footer from './components/Footer.vue';
 
   export default {
     name: 'App',
     components: {
-      AddTodoForm,
-      TodoList,
-      EditTodoForm,
-    },
+    AddTodoForm,
+    TodoList,
+    EditTodoForm,
+    Footer
+},
     data(){
       return {
         todos: [],

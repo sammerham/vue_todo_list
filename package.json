@@ -7,11 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "backend" : "json-server --watch db.json --port 5000"
+    "backend": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
     "@azaleahealth/azalea-kit-ui": "bitbucket:azaleahealth/azalea-kit-ui#alpha",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
