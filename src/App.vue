@@ -75,7 +75,7 @@
       // toggle todo completed or not completed;
       async toggleTodo (id) {
         const todoToUpdate = await this.fetchTodo(id);
-        console.log('todoUpdate', todoToUpdate);
+        console.log('todoUpdate', todoToUpdate);  
         const updatedTodo = {...todoToUpdate, completed:!todoToUpdate.completed};
         console.log('todoUpdate', updatedTodo);
         const res = await fetch(`api/todos/${id}`, {
