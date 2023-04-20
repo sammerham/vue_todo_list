@@ -1,59 +1,14 @@
 {
   "todos": [
     {
-      "task": "Asdasds",
+      "task": "Kjkj",
       "completed": false,
       "id": 1
     },
     {
-      "task": "Dsasd",
+      "task": "Adda",
       "completed": false,
       "id": 2
-    },
-    {
-      "task": "Asdsad",
-      "completed": false,
-      "id": 3
-    },
-    {
-      "task": "Dsasd",
-      "completed": false,
-      "id": 4
-    },
-    {
-      "task": "ASAas",
-      "completed": false,
-      "id": 5
-    },
-    {
-      "task": "Saasa",
-      "completed": false,
-      "id": 6
-    },
-    {
-      "task": "SADSA",
-      "completed": true,
-      "id": 7
-    },
-    {
-      "task": "DSSAD",
-      "completed": false,
-      "id": 8
-    },
-    {
-      "task": "DSASDASAD",
-      "completed": false,
-      "id": 9
-    },
-    {
-      "task": "Dasdsads",
-      "completed": false,
-      "id": 10
-    },
-    {
-      "task": "Dsasadsad",
-      "completed": false,
-      "id": 11
     }
   ]
 }

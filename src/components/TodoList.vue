@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { isEmpty } from 'rxjs';
 import Todo from './Todo.vue';
     export default {
         name: 'TodoList',

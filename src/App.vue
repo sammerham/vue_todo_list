@@ -1,14 +1,15 @@
 <template>
   <div>
-    <h1  v-if="!this.isEditing"> Todo App </h1> 
+    
     <h1  v-if="this.isEditing"> Edit Todo </h1> 
+    <h1  v-else> Todo App </h1> 
     <AddTodoForm 
     v-if="!this.isEditing"
     @add-todo="addTodo"
     />
    
     <EditTodoForm 
-      v-show="this.isEditing"
+      v-else
       @cancel-edit="cancelEditing"
       @update-todo="updateTodo"
       :currentTodo="this.currentTodo"
