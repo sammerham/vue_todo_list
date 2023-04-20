@@ -31,6 +31,7 @@
     import TodoList from './components/TodoList.vue';
     import EditTodoForm from './components/EditTodoForm.vue';
     import Footer from './components/Footer.vue';
+    import axios from 'axios';
 
   export default {
     name: 'App',
@@ -53,14 +54,24 @@
       async addTodo (todo) {
           if(todo){
             todo = todo.charAt(0).toUpperCase() + todo.slice(1);
-            const res = await fetch('api/todos', {
-              method: "POST",
-              headers : {
-                'content-type' : 'application/json',
-              },
-              body: JSON.stringify({task:todo, completed: false})
-            });
-            const data = await res.json();
+            // const res = await fetch('api/todos', {
+            //   method: "POST",
+            //   headers : {
+            //     'content-type' : 'application/json',
+            //   },
+            //   body: JSON.stringify({task:todo, completed: false})
+            // });
+            const res = await axios({
+              method: 'post',
+              url: 'api/todos',
+              data: {
+                task:todo,
+                completed: false
+              }
+            })
+
+            // const data = await res.json();
+            const data = await res.data;
             // this.todos = [...this.todos, {task:todo, id: new Date().getTime(), completed: false}];
             this.todos = [...this.todos, data];
           }
@@ -79,14 +90,23 @@
         console.log('todoUpdate', todoToUpdate);  
         const updatedTodo = {...todoToUpdate, completed:!todoToUpdate.completed};
         console.log('todoUpdate', updatedTodo);
-        const res = await fetch(`api/todos/${id}`, {
-              method: "PUT",
-              headers : {
-                'content-type' : 'application/json',
-              },
-              body: JSON.stringify(updatedTodo )
-            });
-        const data = await res.json();
+        // const res = await fetch(`api/todos/${id}`, {
+        //       method: "PUT",
+        //       headers : {
+        //         'content-type' : 'application/json',
+        //       },
+        //       body: JSON.stringify(updatedTodo )
+        //     });
+        // const data = await res.json();
+
+        const res = await axios({
+          method: 'put',
+          url: `api/todos/${id}`,
+          data: {
+            ...updatedTodo 
+          }
+        })
+        const data = await res.data;
         // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
         this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:data.completed} : todo)
       },
@@ -96,14 +116,23 @@
           updatedTask = updatedTask.charAt(0).toUpperCase() + updatedTask.slice(1);
           const todoToUpdate = await this.fetchTodo(id);
           const updatedTodo = {...todoToUpdate, task:updatedTask};
-          const res = await fetch(`api/todos/${id}`, {
-              method: "PUT",
-              headers : {
-                'content-type' : 'application/json',
-              },
-              body: JSON.stringify(updatedTodo )
-            });
-          const data = await res.json();
+          // const res = await fetch(`api/todos/${id}`, {
+          //     method: "PUT",
+          //     headers : {
+          //       'content-type' : 'application/json',
+          //     },
+          //     body: JSON.stringify(updatedTodo )
+          //   });
+          // const data = await res.json();
+
+          const res = await axios({
+          method: 'put',
+          url: `api/todos/${id}`,
+          data: {
+            ...updatedTodo 
+          }
+        });
+        const data = await res.data;
           // this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
           this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:data.task} : todo);
           this.isEditing = false;
