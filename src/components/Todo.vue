@@ -28,6 +28,19 @@
                 // default (raw prop){  // default from arr or obj must be return from func returned from a factory function. The function receives the raw props received by the component as the argument.
                     // return {};
                 // },
+                // default: () => ({ // <= note the parenthesis
+                //     kitchen : {
+                //         sink: ''
+                //     }
+                //  }) // <= here also
+                // default: () => {
+                // return  {
+                //     kitchen : { // <= note the return
+                //         sink: ''
+                //     }
+                // } 
+                // }
+
                 //validator (value of prop){ must return bool
                     //logic to validate
                 // } 
