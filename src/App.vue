@@ -4,7 +4,7 @@
     <h1  v-if="this.isEditing"> Edit Todo </h1> 
     <h1  v-else> Todo App </h1> 
     <AddTodoForm 
-    v-if="!this.isEditing"
+    v-if="!isEditing"
     @add-todo="addTodo"
     />
    
@@ -12,14 +12,14 @@
       v-else
       @cancel-edit="cancelEditing"
       @update-todo="updateTodo"
-      :currentTodo="this.currentTodo"
+      :currentTodo="currentTodo"
     />
     <TodoList 
-      v-if="!this.isEditing"
+      v-if="!isEditing"
       @toggle-todo="toggleTodo" 
       @delete-todo="deleteTodo" 
       @edit-todo="editTodo"
-      :todos="this.todos"
+      :todos="todos"
       />
       <router-view></router-view>
       <Footer />
@@ -86,10 +86,8 @@
       },
       // toggle todo completed or not completed;
       async toggleTodo (id) {
-        const todoToUpdate = await this.fetchTodo(id);
-        console.log('todoUpdate', todoToUpdate);  
+        const todoToUpdate = await this.fetchTodo(id); 
         const updatedTodo = {...todoToUpdate, completed:!todoToUpdate.completed};
-        console.log('todoUpdate', updatedTodo);
         // const res = await fetch(`api/todos/${id}`, {
         //       method: "PUT",
         //       headers : {

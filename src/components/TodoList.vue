@@ -17,7 +17,6 @@ import Todo from './Todo.vue';
         name: 'TodoList',
         props: {
             todos: Array,
-            todo:Object
         },
         components:{
             Todo

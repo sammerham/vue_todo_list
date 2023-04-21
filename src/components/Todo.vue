@@ -22,8 +22,20 @@
     export default {
         name: 'Todo',
         props: {
-            todo: Object,
+           todo: {
+                type: Object,
+                // required : true,
+                // default (raw prop){  // default from arr or obj must be return from func returned from a factory function. The function receives the raw props received by the component as the argument.
+                    // return {};
+                // },
+                //validator (value of prop){ must return bool
+                    //logic to validate
+                // } 
+            }
         },
+        // props: {
+        //    todo: Object
+        // },
         computed:{
             isCompleted(){
                 return this.todo.completed
