@@ -20,6 +20,7 @@
       @delete-todo="deleteTodo" 
       @edit-todo="editTodo"
       :todos="todos"
+      :upperCaseFn="upperCaseTodo"
       />
       <router-view></router-view>
       <Footer />
@@ -108,6 +109,31 @@
         // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
         this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:data.completed} : todo)
       },
+      // Uppercase Todo;
+      async upperCaseTodo (id) {
+        const todoToUpdate = await this.fetchTodo(id); 
+        const updatedTodo = {...todoToUpdate, task:todoToUpdate.task.toUpperCase()};
+        // const res = await fetch(`api/todos/${id}`, {
+        //       method: "PUT",
+        //       headers : {
+        //         'content-type' : 'application/json',
+        //       },
+        //       body: JSON.stringify(updatedTodo )
+        //     });
+        // const data = await res.json();
+
+        const res = await axios({
+          method: 'put',
+          url: `api/todos/${id}`,
+          data: {
+            ...updatedTodo 
+          }
+        })
+        const data = await res.data;
+        // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
+        this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:data.task} : todo)
+      },
+      
       // fn to update a todo
       async updateTodo (id, updatedTask) {
         if(updatedTask){

@@ -6,6 +6,7 @@
             @delete-todo="$emit('delete-todo', todo.id)"  
             @edit-todo="$emit('edit-todo', todo)"  
             :todo="todo"
+            :upperCaseFn="upperCaseFn"
             />
    </ul>
 
@@ -17,6 +18,7 @@ import Todo from './Todo.vue';
         name: 'TodoList',
         props: {
             todos: Array,
+            upperCaseFn : Function 
         },
         components:{
             Todo
