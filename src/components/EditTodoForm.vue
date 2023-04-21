@@ -1,16 +1,22 @@
 <template>
-    <form @submit = "handleSubmit">
+    <Form @submit = "handleSubmit">
+    <!-- <form @submit = "handleSubmit"> -->
       <ahi-input class="editForm-input" v-model="task" type="text" name="task" id="task"  :placeholder="currentTodo.task" autocapitalize="sentences"></ahi-input> 
       <ahi-button class="editForm-update" @click="handleSubmit" variant="primary" size="small"> Update </ahi-button>
       <ahi-button class="editForm-cancel"  @click="handleCancel" variant="destructive" size="small"> Cancel </ahi-button>
-    </form>
+    <!-- </form> -->
+  </Form>
   </template>
   
   <script>
     import "@azaleahealth/azalea-kit-ui/dist/components/input/input.js";
     import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
+    import Form from './Form.vue';
     export default {
       name: 'EditTodoForm',
+      components:{
+        Form
+      },
       data(){
       return {
         task: ""

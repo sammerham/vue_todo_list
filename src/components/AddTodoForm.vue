@@ -1,17 +1,22 @@
 <template>
-   
-  <form @submit = "onSubmit">
+   <Form @submit = "onSubmit">
+  <!-- <form @submit = "onSubmit"> -->
     <!-- bind  input value with data using v-model-->
     <ahi-input  v-model = "task" type="text" name="task" :id="task" placeholder="add your task here ...." autocapitalize="on"></ahi-input> 
     <ahi-button id="add-button" @click.prevent="onSubmit" variant="primary" size="small" :disabled="isFormValid"> Add Todo </ahi-button>
-  </form>
+  <!-- </form> -->
+</Form>
 </template>
 
 <script>
   import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
   import "@azaleahealth/azalea-kit-ui/dist/components/input/input.js";
+  import Form from './Form.vue';
   export default {
     name: 'AddTodoForm',
+    components: {
+      Form
+    },
     computed:{
       isFormValid(){
         return !this.task

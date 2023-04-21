@@ -1,8 +1,8 @@
 {
   "todos": [
     {
-      "task": "FFEWF",
-      "completed": false,
+      "task": "Sameh",
+      "completed": true,
       "id": 7
     },
     {
@@ -24,6 +24,11 @@
       "task": "ZCZXCZ",
       "completed": true,
       "id": 12
+    },
+    {
+      "task": "XzXZ",
+      "completed": true,
+      "id": 13
     }
   ]
 }
