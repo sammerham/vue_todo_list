@@ -2,14 +2,16 @@
     <div>
         <ahi-button class="todo-delete" variant="destructive" size="small" @click="handleDelete"> Delete </ahi-button>
         <ahi-button  class="todo-edit" size="small" @click="handleEdit" :disabled="todo.completed" > Edit </ahi-button>
-        <ahi-button  class="todo-edit" size="small" @click="upperCaseFn(todo.id)" > UpperCase </ahi-button>
+        <ahi-button  class="todo-edit" size="small" @click="todosStore.upperCaseTodo(todo.id)" > UpperCase </ahi-button>
         <ahi-checkbox class="todo-toggle" type="checkbox" @click="handleToggle"  :checked="isCompleted"></ahi-checkbox>
         <li :class="[todo.completed? 'complete' : 'incomplete', todo ]">{{todo.task}}</li>
     </div> 
 
 </template>
 
-<script type="module">
+<script >
+    import { mapStores } from 'pinia';
+    import useTodosStore from '@/srores/todo';
     import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
     import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";``
     import { Fragment } from 'vue';
@@ -17,11 +19,18 @@
     import "@azaleahealth/azalea-kit-ui/dist/components/icon/icon.js";
     import { AzaleaIcons } from "@azaleahealth/azalea-kit-ui";
     import { userIcon } from "@azaleahealth/azalea-kit-ui";
+import todosStore from '@/srores/todo';
     AzaleaIcons.addIcons(userIcon);
 
 
     export default {
         name: 'Todo',
+        computed:{
+            ...mapStores(useTodosStore),
+            isCompleted(){
+                return this.todo.completed
+            }
+        },
         props: {
            todo: {
                 type: Object,
@@ -51,26 +60,29 @@
         // props: {
         //    todo: Object
         // },
-        computed:{
-            isCompleted(){
-                return this.todo.completed
-            }
-        },
+        // computed:{
+        //     isCompleted(){
+        //         return this.todo.completed
+        //     }
+        // },
         methods:{
             // fn to delete a todo
             handleDelete () {
-                this.$emit('delete-todo', this.todo.id)
+                // this.$emit('delete-todo', this.todo.id)
+                this.todosStore.deleteTodo(this.todo.id)
               },
               // fn to toggle todo completed/!completed
               handleToggle () {
-                this.$emit('toggle-todo', this.todo.id)
+                // this.$emit('toggle-todo', this.todo.id)
+                this.todosStore.toggleTodo(this.todo.id)
               },
              // fn to edit a todo and show edit form
                 handleEdit() {
-                this.$emit('edit-todo', this.todo)
+                // this.$emit('edit-todo', this.todo)
+                this.todosStore.editTodo(this.todo)
             }
         },
-        emits:['toggle-todo', 'delete-todo', 'edit-todo']
+        // emits:['toggle-todo', 'delete-todo', 'edit-todo']
     }
 </script>
 

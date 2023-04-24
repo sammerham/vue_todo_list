@@ -1,102 +1,170 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
+import axios from 'axios';
 
-export const useTodosStore = defineStore('todos', {
-    state: () => {
-        return {
-          // all these properties will have their type inferred automatically
-          todos: [],
-          currentTodo: {},
-          isEditing: false,
-        }
+export default defineStore('todos', {
+    state:()=> ({
+        todos: [],
+        currentTodo: {},
+        isEditing: false,
+    }),
+    getters:{
+        // 
     },
-    getters: {
-       //
-    },
-    actions: {
+    actions:{
         // fn to add a todo to main todo list
-        async addTodo (todo) {
-            if(todo){
-                todo = todo.charAt(0).toUpperCase() + todo.slice(1);
-                const res = await fetch('api/todos', {
-                method: "POST",
-                headers : {
-                    'content-type' : 'application/json',
-                },
-                body: JSON.stringify({task:todo, completed: false})
-                });
-                const data = await res.json();
-                // this.todos = [...this.todos, {task:todo, id: new Date().getTime(), completed: false}];
-                this.todos = [...this.todos, data];
+      async addTodo (todo) {
+        if(todo){
+          todo = todo.charAt(0).toUpperCase() + todo.slice(1);
+          // const res = await fetch('api/todos', {
+          //   method: "POST",
+          //   headers : {
+          //     'content-type' : 'application/json',
+          //   },
+          //   body: JSON.stringify({task:todo, completed: false})
+          // });
+          const res = await axios({
+            method: 'post',
+            url: 'api/todos',
+            data: {
+              task:todo,
+              completed: false
             }
-        },
-        // fn to delete a todo from main list
-        async deleteTodo (id ) {
-            const res = await fetch(`api/todos/${id}`, {
-            method:'DELETE'
-            });
-            
-            res.status === 200 ? this.todos = this.todos.filter(todo => todo.id !== id) : alert(`can't find this task!`)
-        },
-        // toggle todo completed or not completed;
-        async toggleTodo (id) {
-            const todoToUpdate = await this.fetchTodo(id);
-            console.log('todoUpdate', todoToUpdate);
-            const updatedTodo = {...todoToUpdate, completed:!todoToUpdate.completed};
-            console.log('todoUpdate', updatedTodo);
-            const res = await fetch(`api/todos/${id}`, {
-                method: "PUT",
-                headers : {
-                    'content-type' : 'application/json',
-                },
-                body: JSON.stringify(updatedTodo )
-                });
-            const data = await res.json();
-            // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
-            this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:data.completed} : todo)
-        },
-        // fn to update a todo
-        async updateTodo (id, updatedTask) {
-            if(updatedTask){
-                updatedTask = updatedTask.charAt(0).toUpperCase() + updatedTask.slice(1);
-                const todoToUpdate = await this.fetchTodo(id);
-                const updatedTodo = {...todoToUpdate, task:updatedTask};
-                const res = await fetch(`api/todos/${id}`, {
-                    method: "PUT",
-                    headers : {
-                        'content-type' : 'application/json',
-                    },
-                    body: JSON.stringify(updatedTodo )
-                    });
-                const data = await res.json();
-                // this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
-                this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:data.task} : todo);
-                this.isEditing = false;
-            }
-        },
-        // cancel edit and return to main form and todo list
-        cancelEditing(){
-            this.isEditing = false
-            this.currentTodo = {}
-        },
-        // handle edit Click and show edit form 
-        editTodo (todo) {
-            this.isEditing = true;
-            this.currentTodo = todo;
-        },
-        async fetchTodos(){
-            const res = await fetch('api/todos');
-            const data = await res.json();
-            return data;
-        },
-        async fetchTodo(id){
-            const res = await fetch(`api/todos/${id}`);
-            const data = await res.json();
-            return data;
-        },
-        async created(){
-            // const savedTodos = JSON.parse(localStorage.getItem('todosKey'));
-            //  this.todos = savedTodos;
-            this.todos = await this.fetchTodos();
+          })
+
+          // const data = await res.json();
+          const data = await res.data;
+          // this.todos = [...this.todos, {task:todo, id: new Date().getTime(), completed: false}];
+          this.todos = [...this.todos, data];
         }
+    },
+    // fn to delete a todo from main list
+    async deleteTodo (id ) {
+      // const res = await fetch(`api/todos/${id}`, {
+      //   method:'DELETE'
+      // });
+
+      const res = await axios ({
+        method: 'delete',
+        url: `api/todos/${id}`,
+      })
+      console.log('res in delete', res)
+      res.status === 200 ? this.todos = this.todos.filter(todo => todo.id !== id) : alert(`can't find this task!`)
+    },
+    // toggle todo completed or not completed;
+    async toggleTodo (id) {
+      const todoToUpdate = await this.fetchTodo(id); 
+      const updatedTodo = {...todoToUpdate, completed:!todoToUpdate.completed};
+      // const res = await fetch(`api/todos/${id}`, {
+      //       method: "PUT",
+      //       headers : {
+      //         'content-type' : 'application/json',
+      //       },
+      //       body: JSON.stringify(updatedTodo )
+      //     });
+      // const data = await res.json();
+
+      const res = await axios({
+        method: 'put',
+        url: `api/todos/${id}`,
+        data: {
+          ...updatedTodo 
+        }
+      })
+      const data = await res.data;
+      // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
+      this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:data.completed} : todo)
+    },
+    // Uppercase Todo;
+    async upperCaseTodo (id) {
+      const todoToUpdate = await this.fetchTodo(id); 
+      const updatedTodo = {...todoToUpdate, task:todoToUpdate.task.toUpperCase()};
+      // const res = await fetch(`api/todos/${id}`, {
+      //       method: "PUT",
+      //       headers : {
+      //         'content-type' : 'application/json',
+      //       },
+      //       body: JSON.stringify(updatedTodo )
+      //     });
+      // const data = await res.json();
+
+      const res = await axios({
+        method: 'put',
+        url: `api/todos/${id}`,
+        data: {
+          ...updatedTodo 
+        }
+      })
+      const data = await res.data;
+      // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
+      this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:data.task} : todo)
+    },
+    
+    // fn to update a todo
+    async updateTodo (id, updatedTask) {
+      if(updatedTask){
+        updatedTask = updatedTask.charAt(0).toUpperCase() + updatedTask.slice(1);
+        const todoToUpdate = await this.fetchTodo(id);
+        const updatedTodo = {...todoToUpdate, task:updatedTask};
+        // const res = await fetch(`api/todos/${id}`, {
+        //     method: "PUT",
+        //     headers : {
+        //       'content-type' : 'application/json',
+        //     },
+        //     body: JSON.stringify(updatedTodo )
+        //   });
+        // const data = await res.json();
+
+        const res = await axios({
+        method: 'put',
+        url: `api/todos/${id}`,
+        data: {
+          ...updatedTodo 
+        }
+      });
+      const data = await res.data;
+        // this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
+        this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:data.task} : todo);
+        this.isEditing = false;
+      }
+    },
+    // cancel edit and return to main form and todo list
+    cancelEditing(){
+      this.isEditing = false
+      this.currentTodo = {}
+    },
+    // handle edit Click and show edit form 
+    editTodo (todo) {
+      this.isEditing = true;
+      this.currentTodo = todo;
+    },
+    async fetchTodos(){
+      // const res = await fetch('api/todos');
+      // const data = await res.json();
+      // return data;
+      const res = await axios({
+        method: 'get',
+        url: 'api/todos',
+      });
+      const data = await res.data;
+      return data;
+    },
+    async fetchTodo(id){
+      // const res = await fetch(`api/todos/${id}`);
+      // const data = await res.json();
+      // return data;
+
+      const res = await axios({
+        method: 'get',
+        url: `api/todos/${id}`,
+      });
+      const data = await res.data;
+      return data;
     }
-})
+  },
+  // // save todos in local storage ever time we have a new Todo
+  // watch:{
+  //   todos(){
+  //     // localStorage.setItem('todosKey', JSON.stringify(this.todos));
+  //   }
+  // },
+});
