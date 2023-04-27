@@ -24,7 +24,7 @@ export default defineStore('todos', {
           // });
           const res = await axios({
             method: 'post',
-            url: 'api/todos',
+            url: 'http://localhost:5000/todos',
             data: {
               task:todo,
               completed: false
@@ -45,7 +45,7 @@ export default defineStore('todos', {
 
       const res = await axios ({
         method: 'delete',
-        url: `api/todos/${id}`,
+        url: `http://localhost:5000/todos/${id}`,
       })
       console.log('res in delete', res)
       res.status === 200 ? this.todos = this.todos.filter(todo => todo.id !== id) : alert(`can't find this task!`)
@@ -65,7 +65,7 @@ export default defineStore('todos', {
 
       const res = await axios({
         method: 'put',
-        url: `api/todos/${id}`,
+        url: `http://localhost:5000/todos/${id}`,
         data: {
           ...updatedTodo 
         }
@@ -89,7 +89,7 @@ export default defineStore('todos', {
 
       const res = await axios({
         method: 'put',
-        url: `api/todos/${id}`,
+        url: `http://localhost:5000/todos/${id}`,
         data: {
           ...updatedTodo 
         }
@@ -101,6 +101,7 @@ export default defineStore('todos', {
     
     // fn to update a todo
     async updateTodo (id, updatedTask) {
+      console.log('updated todo', this.currentTodo);
       if(updatedTask){
         updatedTask = updatedTask.charAt(0).toUpperCase() + updatedTask.slice(1);
         const todoToUpdate = await this.fetchTodo(id);
@@ -116,15 +117,16 @@ export default defineStore('todos', {
 
         const res = await axios({
         method: 'put',
-        url: `api/todos/${id}`,
+        url: `http://localhost:5000/todos/${id}`,
         data: {
           ...updatedTodo 
         }
       });
       const data = await res.data;
-        // this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
+      //   // this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
         this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:data.task} : todo);
         this.isEditing = false;
+        
       }
     },
     // cancel edit and return to main form and todo list
@@ -143,7 +145,7 @@ export default defineStore('todos', {
       // return data;
       const res = await axios({
         method: 'get',
-        url: 'api/todos',
+        url: 'http://localhost:5000/todos',
       });
       const data = await res.data;
       return data;
@@ -155,7 +157,7 @@ export default defineStore('todos', {
 
       const res = await axios({
         method: 'get',
-        url: `api/todos/${id}`,
+        url: `http://localhost:5000/todos/${id}`,
       });
       const data = await res.data;
       return data;

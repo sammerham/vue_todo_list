@@ -26,6 +26,11 @@ export default {
 }
 </script>
 
-<style scoped>
 
+<style scoped>
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>

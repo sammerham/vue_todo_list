@@ -80,7 +80,7 @@
                 handleEdit() {
                 // this.$emit('edit-todo', this.todo)
                 this.todosStore.editTodo(this.todo)
-                this.$router.push(`/edit/${this.todo.id}`)
+                this.$router.push(`/${this.todo.id}/edit`)
             }
         },
         // emits:['toggle-todo', 'delete-todo', 'edit-todo']
@@ -98,9 +98,8 @@
     div {
         display: flex;
         align-items: center;
-        margin-right: 40px;
         margin-bottom: 18px;
-        justify-content: center;
+        margin-right: 40px;
     }
 
 .todo-edit::part(base) {

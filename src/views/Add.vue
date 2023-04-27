@@ -36,4 +36,9 @@ export default {
   #add-button{
     margin-left: 10px;
   }
+  h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>

@@ -1,12 +1,14 @@
 <template>
     <h1>Todo List</h1>
-    <TodoList 
-      @toggle-todo="todosStore.toggleTodo" 
-      @delete-todo="todosStore.deleteTodo" 
-      @edit-todo="todosStore.editTodo"
-      :todos="todosStore.todos"
-      />
-
+    <div class="wrapper">
+      <TodoList 
+          @toggle-todo="todosStore.toggleTodo" 
+          @delete-todo="todosStore.deleteTodo" 
+          @edit-todo="todosStore.editTodo"
+          :todos="todosStore.todos"
+          />
+    </div>
+      
 </template>
 
 <script>
@@ -33,3 +35,26 @@ export default {
 }
 
 </script>
+
+<style scoped>
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .wrapper {
+      text-align: center;
+  }
+  .wrapper ul {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      margin-left:170px
+  }
+  .wrapper li {
+      float: ;
+      padding: 2px 5px;
+      border: 1px solid black;
+  }
+
+</style>

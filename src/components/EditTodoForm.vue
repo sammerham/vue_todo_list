@@ -9,6 +9,8 @@
   </template>
   
   <script>
+    import { mapStores } from 'pinia';
+    import useTodosStore from '@/srores/todo';
     import "@azaleahealth/azalea-kit-ui/dist/components/input/input.js";
     import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
     import Form from './Form.vue';
@@ -21,7 +23,10 @@
       return {
         task: this.currentTodo.task
       }
-    },
+     },
+      computed:{
+        ...mapStores(useTodosStore),
+      },
       props: {
             currentTodo: Object,
         },
@@ -32,13 +37,17 @@
             alert('Please update this task or cancel')
             return
         }
-          this.$emit('update-todo', this.currentTodo.id, this.task);
+          // this.$emit('update-todo', this.currentTodo.id, this.task);
+           this.todosStore.updateTodo(this.currentTodo.id, this.task)
+           this.$router.push(`/list`)
         },
         handleCancel(){
-            this.$emit('cancel-edit', this.currentTodo);
+            // this.$emit('cancel-edit', this.currentTodo);
+            this.todosStore.cancelEditing();
+            this.$router.push(`/list`)
         }
       },
-      emits:['cancel-edit', 'update-todo']
+      // emits:['cancel-edit', 'update-todo']
     }
   </script>
   

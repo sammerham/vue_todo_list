@@ -1,6 +1,6 @@
 <template>
+    <h1>This is about page!</h1>
     <h3>Version 1.0.0</h3>
-    <p>This is about page!</p>
 </template>
 
 <script>
@@ -12,3 +12,17 @@ export default {
     },
 }
 </script>
+
+
+<style scoped>
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
