@@ -12,12 +12,12 @@
 </script>
 
 <style  scoped>
-a {
-    color:#3333,
-}
-footer{
-    margin-top: 500px;
-    text-align:center;
-}
+    a {
+        color:#3333,
+    }
+    footer{
+        margin-top: 500px;
+        text-align:center;
+    }
 
 </style>

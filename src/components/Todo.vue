@@ -1,8 +1,8 @@
 <template>
     <div>
         <ahi-button class="todo-delete" variant="destructive" size="small" @click="handleDelete"> Delete </ahi-button>
-        <ahi-button  class="todo-edit" size="small" @click="handleEdit" :disabled="todo.completed" > Edit </ahi-button>
-        <ahi-button  class="todo-edit" size="small" @click="todosStore.upperCaseTodo(todo.id)" > UpperCase </ahi-button>
+        <ahi-button  class="todo-edit" size="small" @click="handleEdit" :disabled="todo.completed" > Edit </ahi-button> 
+        <!-- <ahi-button  class="todo-edit" size="small" @click="todosStore.upperCaseTodo(todo.id)" > UpperCase </ahi-button> -->
         <ahi-checkbox class="todo-toggle" type="checkbox" @click="handleToggle"  :checked="isCompleted"></ahi-checkbox>
         <li :class="[todo.completed? 'complete' : 'incomplete', todo ]">{{todo.task}}</li>
     </div> 
