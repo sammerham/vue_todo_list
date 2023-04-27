@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <ahi-button class="todo-delete" variant="destructive" size="small" @click="handleDelete"> Delete </ahi-button>
         <ahi-button  class="todo-edit" size="small" @click="handleEdit" :disabled="todo.completed" > Edit </ahi-button> 
@@ -19,7 +20,6 @@
     import "@azaleahealth/azalea-kit-ui/dist/components/icon/icon.js";
     import { AzaleaIcons } from "@azaleahealth/azalea-kit-ui";
     import { userIcon } from "@azaleahealth/azalea-kit-ui";
-import todosStore from '@/srores/todo';
     AzaleaIcons.addIcons(userIcon);
 
 
@@ -80,6 +80,7 @@ import todosStore from '@/srores/todo';
                 handleEdit() {
                 // this.$emit('edit-todo', this.todo)
                 this.todosStore.editTodo(this.todo)
+                this.$router.push(`/edit/${this.todo.id}`)
             }
         },
         // emits:['toggle-todo', 'delete-todo', 'edit-todo']
@@ -99,6 +100,7 @@ import todosStore from '@/srores/todo';
         align-items: center;
         margin-right: 40px;
         margin-bottom: 18px;
+        justify-content: center;
     }
 
 .todo-edit::part(base) {

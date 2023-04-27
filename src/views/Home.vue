@@ -1,6 +1,5 @@
 <template>
-    <h3>Version 1.0.0</h3>
-    <p>This is about page!</p>
+    <h1>Todo App in Vue</h1>
 </template>
 
 <script>
@@ -12,3 +11,11 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>

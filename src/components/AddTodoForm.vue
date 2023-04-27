@@ -9,6 +9,8 @@
 </template>
 
 <script>
+  import { mapStores } from 'pinia';
+  import useTodosStore from '@/srores/todo';
   import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
   import "@azaleahealth/azalea-kit-ui/dist/components/input/input.js";
   import Form from './Form.vue';
@@ -20,7 +22,8 @@
     computed:{
       isFormValid(){
         return !this.task
-      }
+      },
+      ...mapStores(useTodosStore),
     },
     data(){
       return {
@@ -37,8 +40,10 @@
           alert('Please add a task')
           return
         }
-        this.$emit('add-todo', this.task)
+        // this.$emit('add-todo', this.task)
+        this.todosStore.addTodo(this.task)
         this.resetForm();
+        this.$router.push(`/list`)
       }
     }
   }

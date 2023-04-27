@@ -1,14 +1,20 @@
 <template>
   <div>
     <Navbar />
-  
+    <br>
+    <h1  v-if="todosStore.isEditing"> Edit Todo </h1> 
     <h1  v-else> Todo App </h1> 
     <AddTodoForm 
     v-if="!todosStore.isEditing"
     @add-todo="todosStore.addTodo"
     />
    
- 
+    <EditTodoForm 
+      v-else
+      @cancel-edit="todosStore.cancelEditing"
+      @update-todo="todosStore.updateTodo"
+      :currentTodo="todosStore.currentTodo"
+    /> 
     <TodoList 
       v-if="!todosStore.isEditing"
       @toggle-todo="todosStore.toggleTodo" 
@@ -19,6 +25,7 @@
       />
       <router-view />
       <Footer />
+    
   </div>
 </template>
 
@@ -26,25 +33,30 @@
     import { mapStores } from 'pinia';
     import useTodosStore from '@/srores/todo';
     import AddTodoForm from './components/AddTodoForm.vue'; 
-    import TodoList from './components/TodoList.vue';
-    import EditTodoForm from './components/EditTodoForm.vue';
+    import Navbar from './components/Navbar.vue'; 
+    
+    import TodoList from '@/components/TodoList.vue';
+    import EditTodoForm from '@/components/EditTodoForm.vue';
     import Footer from './components/Footer.vue';
-    import Navbar from './components/Navbar.vue';
+    import axios from 'axios';
 
 
 
   export default {
-      name: 'App',
-      components: {
+    name: 'App',
+    components: {
       AddTodoForm,
       TodoList,
       EditTodoForm,
-      Footer
-},
+      Footer,
+      Navbar
+    },
     computed:{
-    ...mapStores(useTodosStore)
+      ...mapStores(useTodosStore)
     },
     async created(){
+      // const savedTodos = JSON.parse(localStorage.getItem('todosKey'));
+      //  this.todos = savedTodos;
       this.todosStore.todos = await this.todosStore.fetchTodos();
     }
   }
