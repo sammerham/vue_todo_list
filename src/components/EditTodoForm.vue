@@ -2,7 +2,7 @@
     <Form @submit = "handleSubmit">
     <!-- <form @submit = "handleSubmit"> -->
       <ahi-input class="editForm-input" v-model="task" type="text" name="task" id="task"  :placeholder="currentTodo.task" ></ahi-input> 
-      <ahi-button class="editForm-update" @click="handleSubmit" variant="primary" size="small"> Update </ahi-button>
+      <ahi-button class="editForm-update" @click.prevent="handleSubmit" variant="primary" size="small"> Update </ahi-button>
       <ahi-button class="editForm-cancel"  @click="handleCancel" variant="destructive" size="small"> Cancel </ahi-button>
     <!-- </form> -->
   </Form>
@@ -27,8 +27,7 @@
         },
       methods: {
         handleSubmit(e) {
-          console.log(e.target.value );
-        e.preventDefault()
+        // e.preventDefault()
         if (!this.task) {
             alert('Please update this task or cancel')
             return
