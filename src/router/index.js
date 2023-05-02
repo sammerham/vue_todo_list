@@ -1,22 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import About from '@/views/About.vue';
-import Add from '@/views/Add.vue';
-import Edit from '@/views/Edit.vue';
-import List from '@/views/List.vue';
-import Home from '@/views/Home.vue';
+// import About from '@/views/About.vue';
+// import Add from '@/views/Add.vue';
+// import Edit from '@/views/Edit.vue';
+// import List from '@/views/List.vue';
+// import Home from '@/views/Home.vue';
 
 
 const routes = [
     { 
         path: '/', 
         name: 'Home',
-        // component: () => import('@/views/About.vue'),
-        component: Home,
+        component: () => import('@/views/Home.vue'),
+        // component: Home,
     },
     { 
         path: '/about', 
         name: 'About',
-        component: About,
+        // component: About,
+        component: () => import('@/views/About.vue'),
+
         beforeEnter: (to, from, next) => {
             // ...
             console.log('manage route guard');
@@ -26,7 +28,8 @@ const routes = [
     { 
         path: '/add', 
         name: 'Add',
-        component: Add,
+        // component: Add,
+        component: () => import('@/views/Add.vue'),
         meta:{
             requiresAuth:true
         }
@@ -34,12 +37,14 @@ const routes = [
     { 
         path: `/:id/edit`, 
         name: 'Edit',
-        component: Edit,
+        // component: Edit,
+        component: () => import('@/views/Edit.vue'),
     },
     { 
         path: '/list', 
         name: 'List',
-        component: List,
+        // component: List,
+        component: () => import('@/views/List.vue'),
     },
     { 
         path: '/:catchAll(.*)*', 
