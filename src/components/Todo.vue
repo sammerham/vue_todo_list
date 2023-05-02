@@ -21,8 +21,8 @@
     import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";``
     import { Fragment } from 'vue';
     import "@azaleahealth/azalea-kit-ui/dist/components/icon/icon.js";
-     import "@azaleahealth/azalea-kit-ui/dist/components/icon-button/icon-button.js";
-
+    import "@azaleahealth/azalea-kit-ui/dist/components/icon-button/icon-button.js";
+    import Size from '@/directives/size';
     import { AzaleaIcons } from "@azaleahealth/azalea-kit-ui";
     import { userIcon, trashIcon, pencilIcon } from "@azaleahealth/azalea-kit-ui";
     AzaleaIcons.addIcons(userIcon, trashIcon, pencilIcon );
@@ -34,6 +34,9 @@
             isCompleted(){
                 return this.todo.completed
             }
+        },
+        directives:{
+            'size':Size
         },
         props: {
            todo: {
