@@ -1,8 +1,8 @@
 <template>
-    <Form @submit = "handleSubmit">
+    <Form @submit="handleSubmit">
     <!-- <form @submit = "handleSubmit"> -->
-      <ahi-input class="editForm-input" v-model="task" type="text" name="task" id="task"  :placeholder="currentTodo.task" ></ahi-input> 
-      <ahi-button class="editForm-update" @click.prevent="handleSubmit" variant="primary" size="small"> Update </ahi-button>
+      <ahi-input v-theme="'narrow'" class="editForm-input" v-model="task" type="text" name="task" id="task"  :placeholder="currentTodo.task" ></ahi-input> 
+      <ahi-button  class="editForm-update" @click.prevent="handleSubmit" variant="primary" size="small"> Update </ahi-button>
       <ahi-button class="editForm-cancel"  @click="handleCancel" variant="destructive" size="small"> Cancel </ahi-button>
     <!-- </form> -->
   </Form>
@@ -64,5 +64,6 @@
     .editForm-input{
         margin-right: 20px;
     }
+
   </style>
   

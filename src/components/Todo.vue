@@ -8,7 +8,7 @@
         <ahi-button  class="todo-edit" size="small" @click="handleEdit" :disabled="todo.completed" > Edit </ahi-button> 
         <!-- <ahi-button  class="todo-edit" size="small" @click="todosStore.upperCaseTodo(todo.id)" > UpperCase </ahi-button> -->
         <ahi-checkbox class="todo-toggle" type="checkbox" @click="handleToggle"  :checked="isCompleted"></ahi-checkbox>
-        <li v-rainbow :class="[todo.completed? 'complete' : 'incomplete', todo ]">{{todo.task}}</li>
+        <li v-rainbow v-theme:bold v-size.big :class="[todo.completed? 'complete' : 'incomplete', todo ]">{{todo.task}}</li>
         
     </div> 
 
