@@ -27,6 +27,9 @@ const routes = [
         path: '/add', 
         name: 'Add',
         component: Add,
+        meta:{
+            requiresAuth:true
+        }
     },
     { 
         path: `/:id/edit`, 

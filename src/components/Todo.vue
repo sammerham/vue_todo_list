@@ -2,10 +2,14 @@
 
     <div>
         <ahi-button class="todo-delete" variant="destructive" size="small" @click="handleDelete"> Delete </ahi-button>
+        <!-- <ahi-icon name="trash" class="todo-delete" @click="handleDelete"></ahi-icon> -->
+        <ahi-icon-button class="todo-delete" name="trash" label="trash" @click="handleDelete"></ahi-icon-button>
+        <ahi-icon-button name="pencil" class="pencil" label="pencil" @click="handleEdit"></ahi-icon-button>
         <ahi-button  class="todo-edit" size="small" @click="handleEdit" :disabled="todo.completed" > Edit </ahi-button> 
         <!-- <ahi-button  class="todo-edit" size="small" @click="todosStore.upperCaseTodo(todo.id)" > UpperCase </ahi-button> -->
         <ahi-checkbox class="todo-toggle" type="checkbox" @click="handleToggle"  :checked="isCompleted"></ahi-checkbox>
         <li :class="[todo.completed? 'complete' : 'incomplete', todo ]">{{todo.task}}</li>
+        
     </div> 
 
 </template>
@@ -16,12 +20,12 @@
     import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
     import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";``
     import { Fragment } from 'vue';
-
     import "@azaleahealth/azalea-kit-ui/dist/components/icon/icon.js";
-    import { AzaleaIcons } from "@azaleahealth/azalea-kit-ui";
-    import { userIcon } from "@azaleahealth/azalea-kit-ui";
-    AzaleaIcons.addIcons(userIcon);
+     import "@azaleahealth/azalea-kit-ui/dist/components/icon-button/icon-button.js";
 
+    import { AzaleaIcons } from "@azaleahealth/azalea-kit-ui";
+    import { userIcon, trashIcon, pencilIcon } from "@azaleahealth/azalea-kit-ui";
+    AzaleaIcons.addIcons(userIcon, trashIcon, pencilIcon );
 
     export default {
         name: 'Todo',
@@ -108,16 +112,22 @@
     padding: 10px;
   }
 
+
   .todo-delete {
     /* background: rgb(55, 55, 53);
     color: whitesmoke;
     border-radius: var(--ahi-border-radius-medium); */
     margin-right: 20px;
     margin-left: -1px;
+    color: red;
+    
   }
   .todo-toggle{
 
     margin-left: 15px;
     margin-right: -1px;
+  }
+  .pencil {
+    color: #006400
   }
 </style>

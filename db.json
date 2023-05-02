@@ -1,34 +1,9 @@
 {
   "todos": [
     {
-      "task": "Dadasds",
+      "task": "SDADSSAD",
       "completed": false,
       "id": 1
-    },
-    {
-      "task": "Ssa",
-      "completed": false,
-      "id": 2
-    },
-    {
-      "task": "AsasSasasasaAAssa",
-      "completed": false,
-      "id": 3
-    },
-    {
-      "task": "SaasAs",
-      "completed": false,
-      "id": 4
-    },
-    {
-      "task": "Dadsads",
-      "completed": false,
-      "id": 5
-    },
-    {
-      "task": "Sddsadsa",
-      "completed": false,
-      "id": 6
     }
   ]
 }
