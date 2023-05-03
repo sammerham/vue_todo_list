@@ -1,23 +1,20 @@
 <template>
-    <footer>        
-        <p>Copyright &copy; 2023</p>
-        <router-link to="/about" exact-active-class="no-active">About</router-link>
-    </footer>
+  <footer>
+    <p>Copyright &copy; 2023</p>
+    <router-link to="/about" exact-active-class="no-active">About</router-link>
+  </footer>
 </template>
 
 <script>
-    export default {
-        
-    };
+export default {};
 </script>
 
-<style  scoped>
-    a {
-        color:#3333,
-    }
-    footer{
-        margin-top: 500px;
-        text-align:center;
-    }
-
+<style scoped>
+a {
+  color: #3333;
+}
+footer {
+  margin-top: 500px;
+  text-align: center;
+}
 </style>

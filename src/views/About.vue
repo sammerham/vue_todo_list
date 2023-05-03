@@ -1,16 +1,14 @@
 <template>
-    <h1>This is about page!</h1>
-    <h3>Version 1.0.0</h3>
+  <h1>This is about page!</h1>
+  <h3>Version 1.0.0</h3>
 </template>
 
-<script>  
+<script>
 export default {
-    name: "ListApp",
-    components: {
-    },
+  name: "ListApp",
+  components: {},
 };
 </script>
-
 
 <style scoped>
 h1 {

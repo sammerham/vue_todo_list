@@ -1,14 +1,9 @@
 {
   "todos": [
     {
-      "task": "Dsasd",
+      "task": "Addasds",
       "completed": false,
-      "id": 20
-    },
-    {
-      "task": "Adsasd",
-      "completed": false,
-      "id": 21
+      "id": 1
     }
   ]
 }

@@ -15,4 +15,3 @@ app.directive("rainbow", Rainbow);
 app.directive("theme", Theme);
 // app.directive('size', Size);
 app.mount("#app");
-

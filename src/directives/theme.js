@@ -1,22 +1,22 @@
 export default {
-    beforeMount(el, binding) {
-        if(binding.value === "wide"){
-            el.style.width = "800px";
-        } else if(binding.value === "narrow"){
-            el.style.width = "300px"; 
-        } 
-        // arguments
-        if(binding.arg === "bold"){
-            el.style.fontWeight = "bold"; 
-        } else if (binding.arg === "italic"){
-            el.style.fontStyle = "italic"; 
-        }
+  beforeMount(el, binding) {
+    if (binding.value === "wide") {
+      el.style.width = "800px";
+    } else if (binding.value === "narrow") {
+      el.style.width = "300px";
+    }
+    // arguments
+    if (binding.arg === "bold") {
+      el.style.fontWeight = "bold";
+    } else if (binding.arg === "italic") {
+      el.style.fontStyle = "italic";
+    }
 
-        // modifiers
-        if(binding.modifiers.uppercase){
-            el.style.fontSize = "4.2em"; 
-         } 
-    },
+    // modifiers
+    if (binding.modifiers.uppercase) {
+      el.style.fontSize = "4.2em";
+    }
+  },
 };
 
 //el --> the element the directive sits on

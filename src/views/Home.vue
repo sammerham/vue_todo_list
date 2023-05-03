@@ -1,13 +1,11 @@
 <template>
-    <h1>Todo App in Vue</h1>
+  <h1>Todo App in Vue</h1>
 </template>
 
 <script>
-  
 export default {
-    name: "HomeApp",
-    components: {
-    },
+  name: "HomeApp",
+  components: {},
 };
 </script>
 

@@ -1,18 +1,24 @@
-
 <template>
-    <nav id="vue">
-        <div class="menu-item"><router-link :to="{name:'Home'}">Home</router-link></div>
-        <div class="menu-item"><router-link :to="{name:'About'}" >About</router-link></div>
-        <div class="menu-item"><router-link :to="{name :'List'}">List</router-link></div>
-        <div class="menu-item"><router-link :to="{name :'Add'}">Add</router-link></div>
-    </nav>
+  <nav id="vue">
+    <div class="menu-item">
+      <router-link :to="{ name: 'Home' }">Home</router-link>
+    </div>
+    <div class="menu-item">
+      <router-link :to="{ name: 'About' }">About</router-link>
+    </div>
+    <div class="menu-item">
+      <router-link :to="{ name: 'List' }">List</router-link>
+    </div>
+    <div class="menu-item">
+      <router-link :to="{ name: 'Add' }">Add</router-link>
+    </div>
+  </nav>
 </template>
 
 <script>
 export default {
   name: "nav-bar",
-  components: {
-  },
+  components: {},
 };
 </script>
 <style>
@@ -24,7 +30,7 @@ nav {
   justify-content: center;
 }
 nav .menu-item {
-  color: #FFF;
+  color: #fff;
   padding: 25px 40px;
   position: relative;
   text-align: center;
@@ -41,7 +47,7 @@ nav .menu-item a {
   color: inherit;
   text-decoration: none;
 }
-.text-red{
+.text-red {
   background-color: gray;
-  }
+}
 </style>

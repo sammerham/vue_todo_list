@@ -1,18 +1,16 @@
 export default {
-    beforeMount(el, binding) {
-       
-
-        // modifiers
-        if(binding.modifiers.small){
-            el.style.fontSize = "x-small"; 
-        } else if (binding.modifiers.smaller){
-            el.style.fontSize = "smaller"; 
-        } else if (binding.modifiers.big){
-            el.style.fontSize = "1.2em"; 
-        } else if (binding.modifiers.bigger){
-            el.style.fontSize = "4.2em"; 
-        } 
-    },
+  beforeMount(el, binding) {
+    // modifiers
+    if (binding.modifiers.small) {
+      el.style.fontSize = "x-small";
+    } else if (binding.modifiers.smaller) {
+      el.style.fontSize = "smaller";
+    } else if (binding.modifiers.big) {
+      el.style.fontSize = "1.2em";
+    } else if (binding.modifiers.bigger) {
+      el.style.fontSize = "4.2em";
+    }
+  },
 };
 
 //el --> the element the directive sits on
