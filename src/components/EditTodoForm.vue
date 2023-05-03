@@ -31,10 +31,13 @@
 </template>
 
 <script>
-import { mapStores } from "pinia";
-import useTodosStore from "@/stores/todo";
 import "@azaleahealth/azalea-kit-ui/dist/components/input/input.js";
 import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
+
+import { mapStores } from "pinia";
+
+import useTodosStore from "@/stores/todo";
+
 import FormApp from "./FormApp.vue";
 export default {
   name: "EditTodoForm",

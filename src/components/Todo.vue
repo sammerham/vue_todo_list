@@ -48,17 +48,21 @@
 </template>
 
 <script>
-import { mapStores } from "pinia";
-import useTodosStore from "@/stores/todo";
 import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
 import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";
+
+import { mapStores } from "pinia";
+
+import useTodosStore from "@/stores/todo";
 ("");
 // import { Fragment } from "vue";
 import "@azaleahealth/azalea-kit-ui/dist/components/icon/icon.js";
 import "@azaleahealth/azalea-kit-ui/dist/components/icon-button/icon-button.js";
-import Size from "@/directives/size";
+
 import { AzaleaIcons } from "@azaleahealth/azalea-kit-ui";
-import { userIcon, trashIcon, pencilIcon } from "@azaleahealth/azalea-kit-ui";
+import { pencilIcon, trashIcon, userIcon } from "@azaleahealth/azalea-kit-ui";
+
+import Size from "@/directives/size";
 AzaleaIcons.addIcons(userIcon, trashIcon, pencilIcon);
 
 export default {

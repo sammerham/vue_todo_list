@@ -9,9 +9,11 @@
 </template>
 
 <script>
-import Todo from "./Todo.vue";
 import { mapStores } from "pinia";
+
 import useTodosStore from "@/stores/todo";
+
+import Todo from "./Todo.vue";
 export default {
   name: "TodoList",
   // props: {

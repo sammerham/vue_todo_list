@@ -12,8 +12,9 @@
 
 <script>
 import { mapStores } from "pinia";
-import useTodosStore from "@/stores/todo";
+
 import TodoList from "@/components/TodoList.vue";
+import useTodosStore from "@/stores/todo";
 
 export default {
   name: "ListApp",

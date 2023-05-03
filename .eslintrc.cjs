@@ -9,7 +9,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["vue", "prettier"],
+  plugins: ["vue", "prettier", "simple-import-sort"],
   rules: {
     // "indent": [
     // 	"error",
@@ -19,5 +19,6 @@ module.exports = {
     quotes: ["error", "double"],
     semi: ["error", "always"],
     "prettier/prettier": "error",
+    "simple-import-sort/imports": "error",
   },
 };

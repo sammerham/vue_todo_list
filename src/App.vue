@@ -9,9 +9,10 @@
 
 <script>
 import { mapStores } from "pinia";
-import useTodosStore from "@/stores/todo";
+
 import FooterApp from "@/components/FooterApp.vue";
 import Navbar from "@/components/Navbar.vue";
+import useTodosStore from "@/stores/todo";
 
 export default {
   name: "App",

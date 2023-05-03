@@ -5,8 +5,9 @@
 
 <script>
 import { mapStores } from "pinia";
-import useTodosStore from "@/stores/todo";
+
 import AddTodoForm from "@/components/AddTodoForm.vue";
+import useTodosStore from "@/stores/todo";
 
 export default {
   name: "AddApp",
