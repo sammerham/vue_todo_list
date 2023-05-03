@@ -1,15 +1,15 @@
 export default {
-    beforeMount(el, binding, vnode) {
-        if(binding.value === 'wide'){
-            el.style.width = '800px';
-        } else if(binding.value === 'narrow'){
-            el.style.width = '300px'; 
+    beforeMount(el, binding) {
+        if(binding.value === "wide"){
+            el.style.width = "800px";
+        } else if(binding.value === "narrow"){
+            el.style.width = "300px"; 
         } 
         // arguments
-        if(binding.arg === 'bold'){
-            el.style.fontWeight = 'bold'; 
-        } else if (binding.arg === 'italic'){
-            el.style.fontStyle = 'italic'; 
+        if(binding.arg === "bold"){
+            el.style.fontWeight = "bold"; 
+        } else if (binding.arg === "italic"){
+            el.style.fontStyle = "italic"; 
         }
 
         // modifiers

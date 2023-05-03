@@ -3,14 +3,12 @@
     <h3>Version 1.0.0</h3>
 </template>
 
-<script>
-  import Navbar from '@/components/Navbar.vue';
-  
+<script>  
 export default {
-    name: 'List',
+    name: "ListApp",
     components: {
     },
-}
+};
 </script>
 
 

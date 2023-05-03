@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import Todo from './Todo.vue';
-import { mapStores } from 'pinia';
-import useTodosStore from '@/stores/todo';
+import Todo from "./Todo.vue";
+import { mapStores } from "pinia";
+import useTodosStore from "@/stores/todo";
 export default {
-        name: 'TodoList',
+        name: "TodoList",
         // props: {
         //     todos: Array,
         //     upperCaseFn : Function 
@@ -29,7 +29,7 @@ export default {
          ...mapStores(useTodosStore)
         },
         // emits:['toggle-todo', 'delete-todo', 'edit-todo']
-    }
+    };
 </script>
 
 <style scoped>

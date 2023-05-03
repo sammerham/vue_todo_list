@@ -10,10 +10,10 @@
 
 <script>
 export default {
-  name: 'navbar',
+  name: "nav-bar",
   components: {
   },
-}
+};
 </script>
 <style>
 nav {

@@ -10,20 +10,20 @@
 </template>
 
 <script>
-  import { mapStores } from 'pinia';
-  import useTodosStore from '@/stores/todo';
-  import EditTodoForm from '@/components/EditTodoForm.vue';
+  import { mapStores } from "pinia";
+  import useTodosStore from "@/stores/todo";
+  import EditTodoForm from "@/components/EditTodoForm.vue";
 
   
 export default {
-    name: 'Edit',
+    name: "EditApp",
     components: {
       EditTodoForm,
     },
      computed:{
       ...mapStores(useTodosStore)
     },
-}
+};
 </script>
 
 

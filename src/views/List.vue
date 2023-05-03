@@ -12,12 +12,12 @@
 </template>
 
 <script>
-  import { mapStores } from 'pinia';
-  import useTodosStore from '@/stores/todo';
-  import TodoList from '@/components/TodoList.vue';
+  import { mapStores } from "pinia";
+  import useTodosStore from "@/stores/todo";
+  import TodoList from "@/components/TodoList.vue";
   
 export default {
-    name: 'List',
+    name: "ListApp",
     components: {
       TodoList,
     },
@@ -29,10 +29,10 @@ export default {
     if(store.length !== 0){   
       next();
     } else {
-      next({name:'Home'});
+      next({name:"Home"});
     }
   }
-}
+};
 
 </script>
 

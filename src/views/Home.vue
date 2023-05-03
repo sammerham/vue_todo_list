@@ -3,13 +3,12 @@
 </template>
 
 <script>
-  import Navbar from '@/components/Navbar.vue';
   
 export default {
-    name: 'List',
+    name: "HomeApp",
     components: {
     },
-}
+};
 </script>
 
 <style scoped>

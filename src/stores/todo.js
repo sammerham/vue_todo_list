@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
-import axios from 'axios';
+import axios from "axios";
 
-export default defineStore('todos', {
+export default defineStore("todos", {
     state:()=> ({
         todos: [],
         currentTodo: {},
@@ -23,13 +23,13 @@ export default defineStore('todos', {
           //   body: JSON.stringify({task:todo, completed: false})
           // });
           const res = await axios({
-            method: 'post',
-            url: 'http://localhost:5000/todos',
+            method: "post",
+            url: "http://localhost:5000/todos",
             data: {
               task:todo,
               completed: false
             }
-          })
+          });
 
           // const data = await res.json();
           const data = await res.data;
@@ -44,11 +44,11 @@ export default defineStore('todos', {
       // });
 
       const res = await axios ({
-        method: 'delete',
+        method: "delete",
         url: `http://localhost:5000/todos/${id}`,
-      })
-      console.log('res in delete', res)
-      res.status === 200 ? this.todos = this.todos.filter(todo => todo.id !== id) : alert(`can't find this task!`)
+      });
+      console.log("res in delete", res);
+      res.status === 200 ? this.todos = this.todos.filter(todo => todo.id !== id) : alert("can't find this task!");
     },
     // toggle todo completed or not completed;
     async toggleTodo (id) {
@@ -64,15 +64,15 @@ export default defineStore('todos', {
       // const data = await res.json();
 
       const res = await axios({
-        method: 'put',
+        method: "put",
         url: `http://localhost:5000/todos/${id}`,
         data: {
           ...updatedTodo 
         }
-      })
+      });
       const data = await res.data;
       // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
-      this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:data.completed} : todo)
+      this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:data.completed} : todo);
     },
     // Uppercase Todo;
     async upperCaseTodo (id) {
@@ -88,20 +88,20 @@ export default defineStore('todos', {
       // const data = await res.json();
 
       const res = await axios({
-        method: 'put',
+        method: "put",
         url: `http://localhost:5000/todos/${id}`,
         data: {
           ...updatedTodo 
         }
-      })
+      });
       const data = await res.data;
       // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
-      this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:data.task} : todo)
+      this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:data.task} : todo);
     },
     
     // fn to update a todo
     async updateTodo (id, updatedTask) {
-      console.log('updated todo', this.currentTodo);
+      console.log("updated todo", this.currentTodo);
       if(updatedTask){
         updatedTask = updatedTask.charAt(0).toUpperCase() + updatedTask.slice(1);
         const todoToUpdate = await this.fetchTodo(id);
@@ -116,7 +116,7 @@ export default defineStore('todos', {
         // const data = await res.json();
 
         const res = await axios({
-        method: 'put',
+        method: "put",
         url: `http://localhost:5000/todos/${id}`,
         data: {
           ...updatedTodo 
@@ -131,8 +131,8 @@ export default defineStore('todos', {
     },
     // cancel edit and return to main form and todo list
     cancelEditing(){
-      this.isEditing = false
-      this.currentTodo = {}
+      this.isEditing = false;
+      this.currentTodo = {};
     },
     // handle edit Click and show edit form 
     editTodo (todo) {
@@ -144,8 +144,8 @@ export default defineStore('todos', {
       // const data = await res.json();
       // return data;
       const res = await axios({
-        method: 'get',
-        url: 'http://localhost:5000/todos',
+        method: "get",
+        url: "http://localhost:5000/todos",
       });
       const data = await res.data;
       return data;
@@ -156,7 +156,7 @@ export default defineStore('todos', {
       // return data;
 
       const res = await axios({
-        method: 'get',
+        method: "get",
         url: `http://localhost:5000/todos/${id}`,
       });
       const data = await res.data;

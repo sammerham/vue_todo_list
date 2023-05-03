@@ -15,28 +15,28 @@
 </template>
 
 <script >
-    import { mapStores } from 'pinia';
-    import useTodosStore from '@/stores/todo';
+    import { mapStores } from "pinia";
+    import useTodosStore from "@/stores/todo";
     import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
-    import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";``
-    import { Fragment } from 'vue';
+    import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";"";
+    // import { Fragment } from "vue";
     import "@azaleahealth/azalea-kit-ui/dist/components/icon/icon.js";
     import "@azaleahealth/azalea-kit-ui/dist/components/icon-button/icon-button.js";
-    import Size from '@/directives/size';
+    import Size from "@/directives/size";
     import { AzaleaIcons } from "@azaleahealth/azalea-kit-ui";
     import { userIcon, trashIcon, pencilIcon } from "@azaleahealth/azalea-kit-ui";
     AzaleaIcons.addIcons(userIcon, trashIcon, pencilIcon );
 
     export default {
-        name: 'Todo',
+        name: "TodoApp",
         computed:{
             ...mapStores(useTodosStore),
             isCompleted(){
-                return this.todo.completed
+                return this.todo.completed;
             }
         },
         directives:{
-            'size':Size
+            "size":Size
         },
         props: {
            todo: {
@@ -76,22 +76,22 @@
             // fn to delete a todo
             handleDelete () {
                 // this.$emit('delete-todo', this.todo.id)
-                this.todosStore.deleteTodo(this.todo.id)
+                this.todosStore.deleteTodo(this.todo.id);
               },
               // fn to toggle todo completed/!completed
               handleToggle () {
                 // this.$emit('toggle-todo', this.todo.id)
-                this.todosStore.toggleTodo(this.todo.id)
+                this.todosStore.toggleTodo(this.todo.id);
               },
              // fn to edit a todo and show edit form
                 handleEdit() {
                 // this.$emit('edit-todo', this.todo)
-                this.todosStore.editTodo(this.todo)
-                this.$router.push(`/${this.todo.id}/edit`)
+                this.todosStore.editTodo(this.todo);
+                this.$router.push(`/${this.todo.id}/edit`);
             }
         },
         // emits:['toggle-todo', 'delete-todo', 'edit-todo']
-    }
+    };
 </script>
 
 <style scoped>

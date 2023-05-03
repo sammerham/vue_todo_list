@@ -1,5 +1,5 @@
 export default {
-    beforeMount(el, binding, vnode) {
+    beforeMount(el, binding) {
        
 
         // modifiers

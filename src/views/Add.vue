@@ -7,19 +7,19 @@
 </template>
 
 <script>
-  import { mapStores } from 'pinia';
-  import useTodosStore from '@/stores/todo';
-  import AddTodoForm from '@/components/AddTodoForm.vue';
+  import { mapStores } from "pinia";
+  import useTodosStore from "@/stores/todo";
+  import AddTodoForm from "@/components/AddTodoForm.vue";
 
 export default {
-    name: 'Add',
+    name: "AddApp",
     components: {
       AddTodoForm,
     },
      computed:{
       ...mapStores(useTodosStore)
     },
-}
+};
 </script>
 
 <style scoped>

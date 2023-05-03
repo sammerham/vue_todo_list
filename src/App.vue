@@ -3,21 +3,21 @@
     <Navbar/>
     <br>
     <router-view />
-    <Footer />
+    <FooterApp />
     
   </div>
 </template>
 
 <script>
-    import { mapStores } from 'pinia';
-    import useTodosStore from '@/stores/todo';
-    import Footer from '@/components/Footer.vue';
-    import Navbar from '@/components/Navbar.vue';
+    import { mapStores } from "pinia";
+    import useTodosStore from "@/stores/todo";
+    import FooterApp from "@/components/FooterApp.vue";
+    import Navbar from "@/components/Navbar.vue";
 
   export default{
-    name: 'App',
+    name: "App",
     components: {
-      Footer,
+      FooterApp,
       Navbar
     },
     computed:{
@@ -28,7 +28,7 @@
       //  this.todos = savedTodos;
       this.todosStore.todos = await this.todosStore.fetchTodos();
     }
-  }
+  };
 </script>
 
 <style scoped>

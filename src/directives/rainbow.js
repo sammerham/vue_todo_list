@@ -1,6 +1,6 @@
 export default {
     beforeMount(el) {
-        el.style.color = '#' + Math.random().toString().slice(2,8);
+        el.style.color = "#" + Math.random().toString().slice(2,8);
     },
 };
 

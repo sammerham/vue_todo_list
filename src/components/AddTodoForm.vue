@@ -1,52 +1,52 @@
 <template>
-   <Form @submit.prevent="onSubmit">
+   <FormApp @submit.prevent="onSubmit">
   <!-- <form @submit = "onSubmit"> -->
     <!-- bind  input value with data using v-model-->
     <ahi-input  v-model="task" type="text" name="task" :id="task" placeholder="add your task here ...." autocapitalize="on"></ahi-input> 
     <ahi-button id="add-button" @click.prevent="onSubmit" variant="primary" size="small" :disabled="isFormValid"> Add Todo </ahi-button>
   <!-- </form> -->
-</Form>
+</FormApp>
 </template>
 
 <script>
   import { mapStores } from "pinia";
-  import useTodosStore from '@/stores/todo';
+  import useTodosStore from "@/stores/todo";
   import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
   import "@azaleahealth/azalea-kit-ui/dist/components/input/input.js";
-  import Form from './Form.vue';
+  import FormApp from "./FormApp.vue";
   export default {
-    name: 'AddTodoForm',
+    name: "AddTodoForm",
     components: {
-      Form
+      FormApp
     },
     computed:{
       isFormValid(){
-        return !this.task
+        return !this.task;
       },
       ...mapStores(useTodosStore),
     },
     data(){
       return {
         task: ""
-      }
+      };
     },
     methods: {
       resetForm () {
-          this.task = ""
+          this.task = "";
         },
-      onSubmit(e) {
+      onSubmit() {
         // e.preventDefault()
         if (!this.task) {
-          alert('Please add a task')
-          return
+          alert("Please add a task");
+          return;
         }
         // this.$emit('add-todo', this.task)
-        this.todosStore.addTodo(this.task)
+        this.todosStore.addTodo(this.task);
         this.resetForm();
-        this.$router.push(`/list`)
+        this.$router.push("/list");
       }
     }
-  }
+  };
 </script>
 
 
