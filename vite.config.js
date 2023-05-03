@@ -7,7 +7,6 @@ import eslint from "vite-plugin-eslint";
 export default defineConfig({
   test: {
     globals: true,
-    globalSetup: [],
   },
   plugins: [
     eslint(),

@@ -4,7 +4,18 @@ module.exports = {
     es2021: true,
   },
   extends: ["eslint:recommended", "plugin:vue/vue3-essential"],
-  overrides: [],
+  overrides: [
+    {
+      files: ["src/components/__tests__/**.spec.js"],
+      globals: {
+        test: "readonly",
+        describe: "readonly",
+        expect: "readonly",
+        vi: "readonly",
+        it: "readonly",
+      },
+    },
+  ],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
