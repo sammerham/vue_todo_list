@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "backend": "json-server --watch db.json --port 5000"
+    "backend": "json-server --watch db.json --port 5000",
+    "prepare": "husky install",
+    "test": "vitest --environment jsdom --ui"
   },
   "dependencies": {
     "@azaleahealth/azalea-kit-ui": "bitbucket:azaleahealth/azalea-kit-ui#alpha",
@@ -19,10 +21,14 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
+    "@vitest/ui": "^0.30.1",
     "eslint": "^8.39.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.11.0",
+    "husky": "^8.0.3",
+    "jsdom": "^22.0.0",
     "vite": "^4.2.0",
-    "vite-plugin-eslint": "^1.8.1"
+    "vite-plugin-eslint": "^1.8.1",
+    "vitest": "^0.30.1"
   }
 }
