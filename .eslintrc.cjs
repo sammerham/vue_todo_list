@@ -13,6 +13,7 @@ module.exports = {
         expect: "readonly",
         vi: "readonly",
         it: "readonly",
+        beforeEach: "readonly",
       },
     },
   ],
