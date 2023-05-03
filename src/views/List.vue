@@ -13,7 +13,7 @@
 
 <script>
   import { mapStores } from 'pinia';
-  import useTodosStore from '@/srores/todo';
+  import useTodosStore from '@/stores/todo';
   import TodoList from '@/components/TodoList.vue';
   
 export default {

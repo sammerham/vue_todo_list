@@ -16,7 +16,7 @@
 
 <script >
     import { mapStores } from 'pinia';
-    import useTodosStore from '@/srores/todo';
+    import useTodosStore from '@/stores/todo';
     import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
     import "@azaleahealth/azalea-kit-ui/dist/components/checkbox/checkbox.js";``
     import { Fragment } from 'vue';

@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from "url";
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,11 +22,11 @@ export default defineConfig({
     port: 8080,
     hot: true,
     proxy: {
-      '^/api': {
-          target: 'http://localhost:5000',
+      "^/api": {
+          target: "http://localhost:5000",
           changeOrigin: true,
-          logLevel: 'debug',
-          rewrite: (path) => path.replace(/^\/api/, '/'),
+          logLevel: "debug",
+          rewrite: (path) => path.replace(/^\/api/, "/"),
       },
     },
   },
@@ -34,4 +34,4 @@ export default defineConfig({
   watch: {
     usePolling: true,
   }
-})
+});

@@ -1,16 +1,16 @@
 <template>
-   <Form @submit = "onSubmit">
+   <Form @submit.prevent="onSubmit">
   <!-- <form @submit = "onSubmit"> -->
     <!-- bind  input value with data using v-model-->
-    <ahi-input  v-model = "task" type="text" name="task" :id="task" placeholder="add your task here ...." autocapitalize="on"></ahi-input> 
+    <ahi-input  v-model="task" type="text" name="task" :id="task" placeholder="add your task here ...." autocapitalize="on"></ahi-input> 
     <ahi-button id="add-button" @click.prevent="onSubmit" variant="primary" size="small" :disabled="isFormValid"> Add Todo </ahi-button>
   <!-- </form> -->
 </Form>
 </template>
 
 <script>
-  import { mapStores } from 'pinia';
-  import useTodosStore from '@/srores/todo';
+  import { mapStores } from "pinia";
+  import useTodosStore from '@/stores/todo';
   import "@azaleahealth/azalea-kit-ui/dist/components/button/button.js";
   import "@azaleahealth/azalea-kit-ui/dist/components/input/input.js";
   import Form from './Form.vue';

@@ -15,7 +15,7 @@
 <script>
 import Todo from './Todo.vue';
 import { mapStores } from 'pinia';
-import useTodosStore from '@/srores/todo';
+import useTodosStore from '@/stores/todo';
 export default {
         name: 'TodoList',
         // props: {

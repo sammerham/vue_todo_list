@@ -11,7 +11,7 @@
 
 <script>
   import { mapStores } from 'pinia';
-  import useTodosStore from '@/srores/todo';
+  import useTodosStore from '@/stores/todo';
   import EditTodoForm from '@/components/EditTodoForm.vue';
 
   
