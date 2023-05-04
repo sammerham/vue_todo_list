@@ -10,7 +10,6 @@ describe("About.vue", () => {
     const wrapper = mount(About, {
       shallow: true,
     });
-    console.log("wrapper--->>", wrapper.text());
     expect(wrapper.text()).toContain("about");
   });
 });
