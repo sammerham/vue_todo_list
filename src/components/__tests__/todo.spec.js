@@ -6,7 +6,7 @@ describe("Todo.vue", () => {
   test("render todo item", () => {
     const todo = {
       id: 123,
-      task: "test",
+      task: "test123",
       completed: false,
     };
     const wrapper = shallowMount(Todo, {
@@ -15,5 +15,11 @@ describe("Todo.vue", () => {
       },
     });
     expect(wrapper.text()).toContain(todo.task);
+    const li = wrapper.find(".incomplete");
+
+    // const radioInput = wrapper.find('input[type="radio"]')
+
+    expect(li.classes()).toContain("incomplete");
+    expect(li.text()).toBe("test123");
   });
 });
