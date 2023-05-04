@@ -14,6 +14,7 @@ module.exports = {
         vi: "readonly",
         it: "readonly",
         beforeEach: "readonly",
+        afterEach: "readonly",
       },
     },
   ],

@@ -1,10 +1,10 @@
 // import { RouterLinkStub, shallowMount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import { mount, shallowMount } from "@vue/test-utils";
+
 // import { createPinia, setActivePinia } from "pinia";
 // import { afterEach, beforeEach, vitest } from "vitest";
-import { afterEach, beforeEach, vi } from "vitest";
-
+// import { afterEach, beforeEach, vi } from "vitest";
 import Todo from "@/components/Todo.vue";
 import TodoList from "@/components/TodoList.vue";
 import useTodosStore from "@/stores/todo";
