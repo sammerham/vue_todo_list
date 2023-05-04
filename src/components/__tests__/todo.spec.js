@@ -11,6 +11,7 @@ describe("Todo.vue", () => {
     };
     const wrapper = shallowMount(Todo, {
       propsData: {
+        // data coming from prop
         todo,
       },
     });

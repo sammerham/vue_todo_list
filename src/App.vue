@@ -26,7 +26,7 @@ export default {
   async created() {
     // const savedTodos = JSON.parse(localStorage.getItem('todosKey'));
     //  this.todos = savedTodos;
-    this.todosStore.todos = await this.todosStore.fetchTodos();
+    this.todosStore.todosData = await this.todosStore.fetchTodos();
   },
 };
 </script>

@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 
 export default defineStore("todos", {
   state: () => ({
-    todos: [],
+    todosData: [],
     currentTodo: {},
     isEditing: false,
   }),
@@ -34,7 +34,7 @@ export default defineStore("todos", {
         // const data = await res.json();
         const data = await res.data;
         // this.todos = [...this.todos, {task:todo, id: new Date().getTime(), completed: false}];
-        this.todos = [...this.todos, data];
+        this.todosData = [...this.todosData, data];
       }
     },
     // fn to delete a todo from main list
@@ -49,7 +49,7 @@ export default defineStore("todos", {
       });
       console.log("res in delete", res);
       res.status === 200
-        ? (this.todos = this.todos.filter((todo) => todo.id !== id))
+        ? (this.todosData = this.todosData.filter((todo) => todo.id !== id))
         : alert("can't find this task!");
     },
     // toggle todo completed or not completed;
@@ -77,7 +77,7 @@ export default defineStore("todos", {
       });
       const data = await res.data;
       // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
-      this.todos = this.todos.map((todo) =>
+      this.todosData = this.todosData.map((todo) =>
         todo.id === id ? { ...todo, completed: data.completed } : todo
       );
     },
@@ -106,7 +106,7 @@ export default defineStore("todos", {
       });
       const data = await res.data;
       // this.todos = this.todos.map(todo => todo.id === id ? {...todo, completed:!todo.completed} : todo)
-      this.todos = this.todos.map((todo) =>
+      this.todosData = this.todosData.map((todo) =>
         todo.id === id ? { ...todo, task: data.task } : todo
       );
     },
@@ -137,7 +137,7 @@ export default defineStore("todos", {
         });
         const data = await res.data;
         //   // this.todos = this.todos.map(todo => todo.id === id ? {...todo, task:updatedTask} : todo);
-        this.todos = this.todos.map((todo) =>
+        this.todosData = this.todosData.map((todo) =>
           todo.id === id ? { ...todo, task: data.task } : todo
         );
         this.isEditing = false;

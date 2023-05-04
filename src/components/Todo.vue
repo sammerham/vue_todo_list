@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="todoChild">
     <ahi-button
       class="todo-delete"
       variant="destructive"

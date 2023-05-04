@@ -5,7 +5,7 @@
       @toggle-todo="todosStore.toggleTodo"
       @delete-todo="todosStore.deleteTodo"
       @edit-todo="todosStore.editTodo"
-      :todos="todosStore.todos"
+      :todos="todosStore.todosData"
     />
   </div>
 </template>
