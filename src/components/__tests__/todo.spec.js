@@ -41,11 +41,7 @@ describe("Todo.vue", () => {
     deleteBtn.trigger("click");
     expect(store.deleteTodo).toHaveBeenCalledTimes(1);
     expect(wrapper.find("div").findAll("ahi-icon-button").length).toEqual(2);
-    // check that the 'Clear Weather Data' button is displayed
-    // expect(wrapper.findAll("button").length).toEqual(2);
-    // expect(wrapper.findAll("button")[0].isVisible()).toBeTruthy();
-    // expect(wrapper.findAll("button")[0].text()).toMatch(
-    //   "Clear Weather Data (2)"
-    // );
+    expect(wrapper.findAll("ahi-button")[0].isVisible()).toBeTruthy();
+    expect(wrapper.findAll("ahi-button")[0].text()).toMatch("Delete");
   });
 });
