@@ -1,5 +1,5 @@
 <template>
-  <FormApp @submit="handleSubmit">
+  <FormApp @submit.prevent="handleSubmit">
     <!-- <form @submit = "handleSubmit"> -->
     <ahi-input
       v-theme="'narrow'"
