@@ -10,8 +10,8 @@
     "backend": "json-server --watch db.json --port 5000",
     "prepare": "husky install",
     "test:unit": "vitest --environment jsdom --ui",
-    "test" : "vitest",
-    "coverage" :"vitest run --coverage"
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@azaleahealth/azalea-kit-ui": "bitbucket:azaleahealth/azalea-kit-ui#alpha",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@pinia/testing": "^0.0.16",
     "@vitejs/plugin-vue": "^4.1.0",
+    "@vitest/coverage-c8": "^0.31.0",
     "@vitest/ui": "^0.30.1",
     "@vue/test-utils": "^2.3.2",
     "eslint": "^8.39.0",
