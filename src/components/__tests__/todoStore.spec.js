@@ -2,6 +2,9 @@ import { createPinia, setActivePinia } from "pinia";
 import { beforeEach } from "vitest";
 
 import useTodosStore from "@/stores/todo";
+vi.mock("", () => {
+  //
+});
 
 describe("todo store", () => {
   beforeEach(() => {
