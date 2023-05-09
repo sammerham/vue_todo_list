@@ -1,29 +1,14 @@
 {
   "todos": [
     {
-      "task": "Hello",
-      "completed": false,
-      "id": 2
+      "task": "Updated todo",
+      "completed": true,
+      "id": 23
     },
     {
       "task": "Updated todo",
       "completed": true,
-      "id": 3
-    },
-    {
-      "task": "Hello",
-      "completed": false,
-      "id": 4
-    },
-    {
-      "task": "Updated todo",
-      "completed": true,
-      "id": 5
-    },
-    {
-      "task": "Hello",
-      "completed": false,
-      "id": 6
+      "id": 25
     }
   ]
 }

@@ -7,6 +7,7 @@ import eslint from "vite-plugin-eslint";
 export default defineConfig({
   test: {
     globals: true,
+    setupFiles: ["./src/routerMock.setup.js", "./src/setupTests.js"],
   },
   plugins: [
     eslint(),
