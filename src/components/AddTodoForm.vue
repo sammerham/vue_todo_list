@@ -67,7 +67,6 @@ export default {
         return;
       }
       // this.$emit('add-todo', this.task)
-      console.log("submitted");
       this.todosStore.addTodo(this.task);
       this.resetForm();
       this.$router.push("/list");
