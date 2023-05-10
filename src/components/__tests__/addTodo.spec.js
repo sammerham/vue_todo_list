@@ -24,24 +24,35 @@ describe("Add todo", () => {
           }),
         ],
       },
+      attachTo: document.body,
     });
-    const input = wrapper.find(".todo-input");
-    // const input = wrapper.find("ahi-input");
+    // const input = wrapper.find(".todo-input");
+    const input1 = wrapper.find("ahi-input");
+    // await input1.element.updateComplete;
+    input1.element.value = "test1";
+    await input1.element.updateComplete;
+    input1.trigger("ahi-input");
+    // await wrapper.vm.$nextTick();
+    // console.log("input--->>", input1);
     // const btn = wrapper.find("#add-button");
     const btn = wrapper.find("ahi-button");
+    await btn.element.updateComplete;
     // await btn.trigger("click");
     // await input.trigger("change", { target: { value: "Changed" } });
     // const input = wrapper.find("input[type='text']");
-    await btn.trigger("click");
+    // await btn.trigger("click");
     const store = useTodosStore();
-    await input.setValue("some value");
-    // console.log("input--->>", input.wrapperElement.formControlController.host);
+    // await input.setValue("some value");
+    // input1.wrapperElement._$AL.value = "true";
+    // await input1.trigger("ahi-change");
+    await btn.trigger("click");
+    // console.log("btn--->>", btn);
+    // await btn.element.click();
     // input.wrapperElement.formControlController.host.__value = "some value";
     // console.log("input--->>", input.wrapperElement.formControlController.host);
     // console.log("input222--->>", input);
     // const btn = wrapper.find("Add Todo");
     // console.log(btn.html());
-    await btn.trigger("click");
     // console.log("router-->>", wrapper.router);
     expect(wrapper.router.push).toHaveBeenCalledTimes(1);
     expect(wrapper.router.push).toHaveBeenCalledWith("/list");

@@ -2,22 +2,22 @@
   <FormApp @submit.prevent="onSubmit">
     <!-- <form @submit = "onSubmit"> -->
     <!-- bind  input value with data using v-model-->
-    <!-- <ahi-input
+    <ahi-input
+      .value="task"
+      @ahi-input="task = $event.target.value"
+      type="text"
+      name="task"
+      :id="task"
+      placeholder="add your task here ...."
+    ></ahi-input>
+    <!-- <input
       v-model="task"
       type="text"
       name="task"
       :id="task"
       placeholder="add your task here ...."
       class="todo-input"
-    ></ahi-input> -->
-    <input
-      v-model="task"
-      type="text"
-      name="task"
-      :id="task"
-      placeholder="add your task here ...."
-      class="todo-input"
-    />
+    /> -->
     <ahi-button
       id="add-button"
       @click.prevent="onSubmit"
@@ -67,6 +67,7 @@ export default {
         return;
       }
       // this.$emit('add-todo', this.task)
+      console.log("submitted");
       this.todosStore.addTodo(this.task);
       this.resetForm();
       this.$router.push("/list");
